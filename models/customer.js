@@ -28,6 +28,7 @@ module.exports = function (sequelize, DataTypes) {
           allowNull: false,
         },
       });
+      Customer.hasMany(models.RewardHistory, {});
     };
     return Customer;
   };
