@@ -24,6 +24,7 @@ module.exports = function (sequelize, DataTypes) {
     // Associating Author with Posts
     // When an Author is deleted, also delete any associated Posts
     Company.hasMany(models.Rewards, {});
+    Company.hasMany(models.Customer, {});
   };
 
   return Company;
