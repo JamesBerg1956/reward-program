@@ -13,7 +13,7 @@ router.get("/api/customer/", (req, res) => {
 
 // find a single customer
 router.get("/api/customer/:phone", (req, res) => {
-    db.Customer.findAll({
+    db.Customer.findOne({
       where: {
         phone: req.params.phone,
       },
