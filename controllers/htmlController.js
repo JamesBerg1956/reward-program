@@ -31,4 +31,12 @@ router.get("/points", isAuthenticated, function (req, res) {
   res.sendFile(path.join(__dirname, "../public/points.html"));
 });
 
+router.get("/rewards", isAuthenticated, function (req, res) {
+  res.sendFile(path.join(__dirname, "../public/rewards.html"));
+});
+
+router.get("/customers", isAuthenticated, function (req, res) {
+  res.sendFile(path.join(__dirname, "../public/customers.html"));
+});
+
 module.exports = router;
