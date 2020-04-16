@@ -11,7 +11,7 @@ router.get("/api/customer/", (req, res) => {
 
 // find a single customer
 router.get("/api/customer/:phone", (req, res) => {
-  db.Customer.findOne({
+  db.Customer.findAll({
     where: {
       phone: req.params.phone,
     },
@@ -26,3 +26,5 @@ router.post("/api/customer/", (req, res) => {
     .then((response) => res.status(200).json(response))
     .catch((error) => res.status(500).json(error));
 });
+
+module.exports = router;
