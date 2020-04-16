@@ -10,7 +10,7 @@ router.get("/", function (req, res) {
   if (req.company) {
     res.redirect("/points");
   }
-  res.sendFile(path.join(__dirname, "../public/signup.html"));
+  res.sendFile(path.join(__dirname, "../public/index.html"));
 });
 
 router.get("/login", function (req, res) {
