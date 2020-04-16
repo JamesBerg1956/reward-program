@@ -16,6 +16,30 @@
       integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T"
       crossorigin="anonymous"
     />
+    <style>
+      @media (min-width:576px){
+        #phoneContainer{
+          width: 576px;
+        }
+      }
+      @media (min-width:768){
+        #phoneContainer{
+          width: 768px;
+        }
+      }
+      button > span {
+        font-size: 2.5rem;
+      }
+      .number{
+        padding-top:20%; padding-bottom:20%;
+      }
+      .find{
+        padding-top:20%; padding-bottom:20%;
+      }
+      .backspace{
+        padding-top:20%; padding-bottom:20%;
+      }
+    </style>
   </head>
   <body>
     
@@ -45,32 +69,111 @@
     </nav>
     <!--END bootstrap nav -->
 
+    <h1 class="text-center">Add Points</h1>
+    <hr/>
+  
+    <!--TODO: make phoneContainer height responsive-->
+
     <!--START bootstrap container -->
-    <div class="container">
-      <!--START bootstrap row - Points h1-->
+    <div class="container d-block" id="phoneContainer">
+      <!--START bootstrap row - phone input-->
       <div class="row">
-        <!--START bootstrap col - Points h1-->
-        <div class="col">
-          <h1 class="text-center">Add Points</h1>
+        <!--START bootstrap col -phone input-->
+        <div class="col-12">
+          <!--START bootstrap card - phone input-->
+          <div class="card">
+            <h2 class="card-header">Customer Phone#</h2>
+            <!--START bootstrap card-body - phone input-->
+            <div class="card-body">
+              <h3 id="phoneinput"></h3>
+            </div>
+            <!--END bootstrap card-body - phone input-->
+          </div>
+          <!--END bootstrap card - phone input-->
         </div>
-        <!--END bootstrap col - Points h1-->
+        <!--START bootstrap col -phone input-->
       </div>
-      <!--END bootstrap row - Points h1-->
-
-      <!--TODO: bootstrap row - phone form-->
-
-        <!--TODO: bootstrap col - phone label-->
-
-          <!-- TODO: phone label element-->
-        
-        <!--TODO: bootstrap col - phone input-->
-
-          <!--TODO: phone input-->
-        
-        <!--TODO: bootstrap col - phone submit button-->
-
-          <!--TODO: phone submit button-->
-
+      <!--END bootstrap row - phone input-->
+      <!--START bootstrap row - numbers 1 2 3-->
+      <div class="row">
+        <!--START bootstrap col - number 1-->
+        <div class="col-4">
+          <button id="button-1" class="btn btn-primary btn-block number" value="1"><span>1</span></button>
+        </div>
+        <!--END bootstrap col - number 1-->
+        <!--START bootstrap col - number 2-->
+        <div class="col-4">
+          <button id="button-2" class="btn btn-primary btn-block number" value="2"><span>2</span></button>
+        </div>
+        <!--END bootstrap col - number 2-->
+        <!--START bootstrap col - number 3-->
+        <div class="col-4">
+          <button id="button-3" class="btn btn-primary btn-block number" value="3"><span>3</span></button>
+        </div>
+        <!--END bootstrap col - number 3-->
+      </div>
+      <!--END bootstrap row - numbers 1 2 3-->
+      <br/>
+      <!--START bootstrap row - numbers 4 5 6-->
+      <div class="row">
+        <!--START bootstrap col - number 4-->
+        <div class="col-4">
+          <button id="button-4" class="btn btn-primary btn-block number" value="4"><span>4</span></button>
+        </div>
+        <!--END bootstrap col - number 4-->
+        <!--START bootstrap col - number 5-->
+        <div class="col-4">
+          <button id="button-5" class="btn btn-primary btn-block number" value="5"><span>5</span></button>
+        </div>
+        <!--END bootstrap col - number 5-->
+        <!--START bootstrap col - number 6-->
+        <div class="col-4">
+          <button id="button-6" class="btn btn-primary btn-block number" value="6"><span>6</span></button>
+        </div>
+        <!--END bootstrap col - number 6-->
+      </div>
+      <!--END bootstrap row - numbers 4 5 6-->
+      <br/>
+      <!--START bootstrap row - numbers 7 8 9-->
+      <div class="row">
+        <!--START bootstrap col - number 7-->
+        <div class="col-4">
+          <button id="button-7" class="btn btn-primary btn-block number" value="7"><span>7</span></button>
+        </div>
+        <!--END bootstrap col - number 7-->
+        <!--START bootstrap col - number 8-->
+        <div class="col-4">
+          <button id="button-8" class="btn btn-primary btn-block number" value="8"><span>8</span></button>
+        </div>
+        <!--END bootstrap col - number 8-->
+        <!--START bootstrap col - number 9-->
+        <div class="col-4">
+          <button id="button-9" class="btn btn-primary btn-block number" value="9"><span>9</span></button>
+        </div>
+        <!--END bootstrap col - number 9-->
+      </div>
+      <!--END bootstrap row - numbers 7 8 9-->
+      <br/>
+      <!--START bootstrap row - back 0 find-->
+      <div class="row">
+        <!--START bootstrap col - backspace-->
+        <div class="col-4">
+          <button id="button-backspace" class="btn btn-secondary btn-block backspace"><span>&lt;=</span></button>
+        </div>
+        <!--END bootstrap col - backspace-->
+        <!--START bootstrap col - number 0-->
+        <div class="col-4">
+          <button id="button-0" class="btn btn-primary btn-block number"><span>0</span></button>
+        </div>
+        <!--END bootstrap col - number 0-->
+        <!--START bootstrap col - find-->
+          <div class="col-4">
+            <button id="button-phoneSubmit" class="btn btn-success btn-block find"><span>Find</span></button>
+          </div>
+        <!--END bootstrap col - find-->
+      </div>
+      <!--END bootstrap row - back 0 find-->
+      
       <!--TODO: bootstrap row style=hidden - customer info first_name last_name email-->
 
         <!--TODO: bootstrap col - first_name-->
