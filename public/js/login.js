@@ -30,7 +30,7 @@ $(document).ready(function () {
     })
       .then(function () {
         // Should we (can we) get company information right now?
-        window.location.replace("/company");
+        window.location.replace("/points");
         // If there's an error, log the error
       })
       .catch(function (err) {

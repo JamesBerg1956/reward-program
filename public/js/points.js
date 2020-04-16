@@ -33,7 +33,7 @@ $(document).ready(function () {
 
   // START points submit button event listener
   $("#button-phoneSubmit").click(function(){
-    event.preventDefault();
+    //event.preventDefault();
 
     // ajax get request to /api/customer/:phone
     var settings = {
@@ -45,23 +45,31 @@ $(document).ready(function () {
     $.ajax(settings).then(function (response) {
 
       const objCustomer = response[0];
-      
-      // TODO: check if phone was found else display message
 
-      //TODO: populate text() of first_nameSpan last_nameSpan emailSpan
+      if(objCustomer){
+        // populate text() of first_nameSpan last_nameSpan emailSpan
+        $("#first_nameSpan").text(objCustomer.first_name);
+        $("#last_nameSpan").text(objCustomer.last_name);
+        $("#emailSpan").text(objCustomer.email);
 
-      //TODO: 
+        // hide #phoneContainer
+        $("#phoneContainer").attr("class", "container d-none")
 
-      //TODO: hide #phoneContainer
+        // unhide #addPointsContainter
+        $("#addPointsContainer").attr("class", "container d-block")
 
-      //TODO: unhide #customerInfo
+        //TODO: unhide #addPointsForm
 
-      //TODO: unhide #addPointsForm
+        //TODO: unhide #rewardCarousel
 
-      //TODO: unhide #rewardCarousel
+        //TODO: unhide #rewardhistoryTable
+      }
+      else{
+        alert("The phone searched for was not found");
+      }
 
-      //TODO: unhide #rewardhistoryTable
-
+    }).catch(function(error){
+      console.log(error);
     });
 
   });
