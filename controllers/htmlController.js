@@ -41,7 +41,7 @@ router.get("/rewards", isAuthenticated, function (req, res) {
 });
 
 router.get("/customers", isAuthenticated, function (req, res) {
-  res.sendFile(path.join(__dirname, "../public/customers.html"));
+  res.sendFile(path.join(__dirname, "../public/newCustomer.html"));
 });
 
 module.exports = router;

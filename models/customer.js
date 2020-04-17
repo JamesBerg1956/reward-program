@@ -27,6 +27,14 @@ module.exports = function (sequelize, DataTypes) {
   Customer.associate = function (models) {
     Customer.belongsTo(models.Company);
     Customer.hasMany(models.rewardhistory);
+    //
+    // Does not work!
+    // Customer.belongsTo(models.Company, {
+    //   foreignKey: {
+    //     allowNull: false,
+    //     name: "company_id",
+    //   },
+    // });
   };
   // The following DOES NOT work!!!!!  I do not know why!!!!
   //
