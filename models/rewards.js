@@ -15,20 +15,19 @@ module.exports = function (sequelize, DataTypes) {
     active: {
       type: DataTypes.BOOLEAN,
     },
-    company_id: {
-      type: DataTypes.INTEGER,
-      allowNull: false,
-    },
   });
 
   Rewards.associate = function (models) {
-    Rewards.belongsTo(models.Company, {
-      foreignKey: {
-        allowNull: false,
-        name: "company_id",
-      },
-    });
+    Rewards.belongsTo(models.Company);
     Rewards.hasMany(models.rewardhistory);
+
+    // Does not work!!!!
+    // Rewards.belongsTo(models.Company, {
+    //   foreignKey: {
+    //     allowNull: false,
+    //     name: "company_id",
+    //   },
+    // });
   };
   return Rewards;
 };
