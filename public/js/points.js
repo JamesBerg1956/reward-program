@@ -2,11 +2,8 @@ $(document).ready(function () {
 
   var arrPhoneInput = [];
   var arrPlusInput = [];
-
-  // TODO: revealHiddenSections function
+  var customerId;
   
-  // TODO: generateCustomerInfoSpans function
-
   // TODO: generateRewardsCarousel function
 
   // TODO: generateRewardsHistoriesTable function
@@ -52,6 +49,7 @@ $(document).ready(function () {
         $("#first_nameSpan").text(objCustomer.first_name);
         $("#last_nameSpan").text(objCustomer.last_name);
         $("#emailSpan").text(objCustomer.email);
+        customerId = objCustomer.id;
 
         // hide #phoneContainer
         $("#phoneContainer").attr("class", "container d-none")
@@ -83,5 +81,28 @@ $(document).ready(function () {
 
   })
   // END plus button event listener
+
+  // START addPointsSubmit event listener
+  $("#addPointsSubmit").click(function(event){
+    
+    // ajax post to /api/rewards/history
+    var settings = {
+      "url": "/api/rewardhistory/",
+      "method": "POST",
+      "timeout": 0,
+      "data": {
+        "points_change": $("#addPointsInput").val(),
+        "CustomerId": customerId
+      }
+    };
+    
+    $.ajax(settings).done(function (response) {
+      // TODO: call generateRewardsCarousel function
+
+      // TODO: call generateRewardsHistoriesTable function
+    });
+
+  });
+  // END addPointsSubmit event listener
 
 });
