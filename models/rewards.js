@@ -15,10 +15,10 @@ module.exports = function (sequelize, DataTypes) {
     active: {
       type: DataTypes.BOOLEAN,
     },
-    company_id: {
-      type: DataTypes.INTEGER,
-      allowNull: false,
-    },
+    // company_id: {
+    //   type: DataTypes.INTEGER,
+    //   allowNull: false,
+    // },
   });
 
   Rewards.associate = function (models) {

@@ -29,10 +29,20 @@ $(document).ready(function () {
       email: email,
       password: password,
     })
-      .then(function () {
+      .then(function (response) {
         console.log("Here2");
-        // Should we (can we) get company information right now?
-        window.location.replace("/points");
+        
+        // check browser support for sessionStorage
+        if (typeof(Storage) !== "undefined"){
+          //store response.id into session as CompanyId
+          sessionStorage.setItem("CompanyId", response.id);
+          // redirect to the points page
+          window.location.replace("/points");
+        }
+        else{
+          alert("This application uses session state. Please enable session state in your web browser");
+        }
+
         // If there's an error, log the error
       })
       .catch(function (err) {
