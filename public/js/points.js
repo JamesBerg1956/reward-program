@@ -1,6 +1,7 @@
 $(document).ready(function () {
 
   var arrPhoneInput = [];
+  var arrPlusInput = [];
 
   // TODO: revealHiddenSections function
   
@@ -12,7 +13,7 @@ $(document).ready(function () {
 
   // START number button event listener
   $(".number").click(function(){
-    event.preventDefault();
+    //event.preventDefault();
     arrPhoneInput.push($(this).val());
     $("#phoneinput").text(arrPhoneInput.join(''))
   });
@@ -20,7 +21,7 @@ $(document).ready(function () {
 
   // START backspace event listener
   $("#button-backspace").click(function(){
-    event.preventDefault();
+    //event.preventDefault();
     arrPhoneInput.pop();
     if(arrPhoneInput.length > 0){
       $("#phoneinput").text(arrPhoneInput.join(''))
@@ -58,8 +59,6 @@ $(document).ready(function () {
         // unhide #addPointsContainter
         $("#addPointsContainer").attr("class", "container d-block")
 
-        //TODO: unhide #addPointsForm
-
         //TODO: unhide #rewardCarousel
 
         //TODO: unhide #rewardhistoryTable
@@ -74,5 +73,15 @@ $(document).ready(function () {
 
   });
   // END points submit button event listener
+
+  // START plus button event listener
+  $(".plus").click(function(event){
+  
+    arrPlusInput.push(parseInt($(this).val()));
+  
+    $("#addPointsInput").val(arrPlusInput.reduce((a, b) => a + b, 0));
+
+  })
+  // END plus button event listener
 
 });
