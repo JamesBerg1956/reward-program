@@ -1,18 +1,27 @@
+//  Naming conventions..
+
+// I think I would set this up to have the routes be more descriptive then they are.  For example,
+// "/api/login" MAYBE should be just "/login"
+// "/api/signup" MAYBE should be "/signup"
+// "/logout" I like
+
+//Not sure naming it "api/..." gave any advantage (these are all APIs)
+
 // Requiring our models and passport as we've configured it
 const express = require("express");
 const router = express.Router();
 const db = require("../models");
 const passport = require("../config/passport");
-//var nodemailer = require("../helper/email");
+//var nodemailer = require("../helper/email");  SMH
 
-// Using the passport.authenticate middleware with our local strategy.
-// If the company has valid login credentials, send them to the members page.
-// Otherwise the company will be sent an error
+// This post route checks to see if the user is logged in.  If so, it will set the res.json to the login information.  If not, it will error out.  NOTE: The line of code
+// "passport.authenticate("local")
+// will call the passport.js file and try and authenticate.  If it does not, it WILL NOT set res.json(req.user).  In fact it will not even run this line of code.
 router.post("/api/login", passport.authenticate("local"), function (req, res) {
   res.json(req.user);
 });
 
-// Route for signing up a company. The company's password is automatically hashed and stored securely thanks to
+// Route for signing up a company. The company's password is automatically hashed
 // how we configured our Sequelize company Model. If the company is created successfully, proceed to log the user in,
 // otherwise send back an error
 router.post("/api/signup", function (req, res) {
@@ -24,7 +33,7 @@ router.post("/api/signup", function (req, res) {
     active: req.body.active,
   })
     .then(function () {
-      //    nodemailer.sendEmail(req.body.email); SMH
+      // We are redirected to "/api/login" because we need to get the JSON data to send back to the browser.
       res.redirect(307, "/api/login");
     })
     .catch(function (err) {

@@ -4,16 +4,17 @@ const db = require("../models");
 
 // find all rewardhistory
 router.get("/api/rewardhistory/", (req, res) => {
-  db.RewardHistory.findAll({})
+  db.rewardhistory
+    .findAll({})
     .then((response) => res.status(200).json(response))
     .catch((error) => res.status(500).json(error));
 });
 
-// post a rewardhistory
+// post a rewardhistory.
 router.post("/api/rewardhistory/", (req, res) => {
-  db.RewardHistory.create(req.body)
+  db.rewardhistory
+    .create(req.body)
     .then((response) => res.status(200).json(response))
     .catch((error) => res.status(500).json(error));
 });
-
 module.exports = router;

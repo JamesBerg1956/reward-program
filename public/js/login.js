@@ -24,16 +24,19 @@ $(document).ready(function () {
 
   // loginUser does a post to our "api/login" route and if successful, redirects us the the members page
   function loginUser(email, password) {
+    console.log("Here1");
     $.post("/api/login", {
       email: email,
       password: password,
     })
       .then(function () {
+        console.log("Here2");
         // Should we (can we) get company information right now?
         window.location.replace("/points");
         // If there's an error, log the error
       })
       .catch(function (err) {
+        console.log("Here3");
         console.log(err);
       });
   }

@@ -1,4 +1,14 @@
-form.signup,
-form.login {
-  margin-top: 50px;
+/* .w-100 {
+  width: 80% !important;
+  height: 90vh;
+  margin-left: 200px;
+} */
+
+.carousel-pics {
+  width: 1000px;
+  height: 700px;
+}
+
+.double {
+  line-height: 40px;
 }

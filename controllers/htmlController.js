@@ -1,3 +1,5 @@
+// I liked having all the html controllers in one spot.  We did not have that many pages so I am not sure if this would need to be addressed if you had a lot more pages??
+
 // Requiring path to so we can use relative routes to our HTML files
 const path = require("path");
 const express = require("express");
@@ -7,24 +9,27 @@ const isAuthenticated = require("../config/middleware/isAuthenticated");
 
 router.get("/", function (req, res) {
   // If the user already has an account send them to the members page
-  if (req.company) {
-    res.redirect("/members");
+  console.log("router.get('/'");
+  if (req.user) {
+    res.redirect("/points");
   }
-  res.sendFile(path.join(__dirname, "../public/signup.html"));
+  res.sendFile(path.join(__dirname, "../public/index.html"));
 });
 
 router.get("/login", function (req, res) {
   // If the user already has an account send them to the members page
   if (req.user) {
-    res.redirect("/members");
+    res.redirect("/points");
   }
   res.sendFile(path.join(__dirname, "../public/login.html"));
 });
 
-// Here we've add our isAuthenticated middleware to this route.
-// If a user who is not logged in tries to access this route they will be redirected to the signup page
-router.get("/members", isAuthenticated, function (req, res) {
-  res.sendFile(path.join(__dirname, "../public/members.html"));
+router.get("/signup", function (req, res) {
+  // If the user already has an account send them to the members page
+  if (req.user) {
+    res.redirect("/points");
+  }
+  res.sendFile(path.join(__dirname, "../public/signup.html"));
 });
 
 router.get("/points", isAuthenticated, function (req, res) {
