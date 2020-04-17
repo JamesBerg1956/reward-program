@@ -32,7 +32,7 @@ module.exports = function (sequelize, DataTypes) {
   //
   Customer.associate = function (models) {
     Customer.belongsTo(models.Company, {
-      foreignKey: {
+      company_id: {
         allowNull: false,
       },
     });
