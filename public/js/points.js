@@ -3,8 +3,7 @@ $(document).ready(function () {
   var arrPhoneInput = [];
   var arrPlusInput = [];
   var customerId;
-  
-  // TODO: generateRewardsCarousel function
+  var arrRewardHistory;
 
   // TODO: generateRewardsHistoriesTable function
 
@@ -34,7 +33,7 @@ $(document).ready(function () {
     //event.preventDefault();
 
     // ajax get request to /api/customer/:phone
-    var settings = {
+    const settings = {
       "url": "/api/customer/"+$("#phoneinput").text(),
       "method": "GET",
       "timeout": 0,
@@ -57,15 +56,14 @@ $(document).ready(function () {
         // unhide #addPointsContainter
         $("#addPointsContainer").attr("class", "container d-block")
 
-        //TODO: unhide #rewardCarousel
-
-        //TODO: unhide #rewardhistoryTable
       }
       else{
         alert("The phone searched for was not found");
       }
 
-    }).catch(function(error){
+    })
+    .then(generateRewardHistory)
+    .catch(function(error){
       console.log(error);
     });
 
@@ -86,7 +84,7 @@ $(document).ready(function () {
   $("#addPointsSubmit").click(function(event){
     
     // ajax post to /api/rewards/history
-    var settings = {
+    const settings = {
       "url": "/api/rewardhistory/",
       "method": "POST",
       "timeout": 0,
@@ -96,13 +94,35 @@ $(document).ready(function () {
       }
     };
     
-    $.ajax(settings).done(function (response) {
-      // TODO: call generateRewardsCarousel function
-
-      // TODO: call generateRewardsHistoriesTable function
-    });
+    $.ajax(settings).done(generateRewardHistory);
 
   });
   // END addPointsSubmit event listener
+
+  // START generateRewardHistory function
+  function generateRewardHistory(){
+    // call ajax GET on rewardhistories where id = customerId
+    const settings = {
+      "url": "/api/rewardhistory/"+customerId,
+      "method": "GET",
+      "timeout": 0,
+    };
+    $.ajax(settings).done(function (response) {
+      // store current state of rewardhistory database in object array
+      arrRewardHistory = response;
+
+      // sum points_added from rewardhistory and assign it to #currentPointsSpan
+      let pointTotal = 0;
+      for (let i = 0; i < arrRewardHistory.length; i++) {
+        pointTotal += arrRewardHistory[i].points_change;
+      }
+      $("#currentPointsSpan").text(pointTotal);
+    });
+  }
+  // END generateRewardHistory function
+
+  // START generateRewardsCarousel function
+  
+  // END generateRewardsCarousel function
 
 });
