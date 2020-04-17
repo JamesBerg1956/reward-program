@@ -1,3 +1,5 @@
+// I liked having all the html controllers in one spot.  We did not have that many pages so I am not sure if this would need to be addressed if you had a lot more pages??
+
 // Requiring path to so we can use relative routes to our HTML files
 const path = require("path");
 const express = require("express");
@@ -7,7 +9,8 @@ const isAuthenticated = require("../config/middleware/isAuthenticated");
 
 router.get("/", function (req, res) {
   // If the user already has an account send them to the members page
-  if (req.company) {
+  console.log("router.get('/'");
+  if (req.user) {
     res.redirect("/points");
   }
   res.sendFile(path.join(__dirname, "../public/index.html"));
@@ -22,14 +25,10 @@ router.get("/login", function (req, res) {
 });
 
 router.get("/signup", function (req, res) {
-  console.log("made it");
   // If the user already has an account send them to the members page
   if (req.user) {
     res.redirect("/points");
   }
-  console.log("should redirect");
-  tpath = path.join(__dirname, "../public/signup.html");
-  console.log(tpath);
   res.sendFile(path.join(__dirname, "../public/signup.html"));
 });
 

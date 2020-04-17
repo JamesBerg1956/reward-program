@@ -6,12 +6,12 @@ var db = require("../models");
 // Telling passport we want to use a Local Strategy. In other words, we want login with a companyname/email and password
 passport.use(
   new LocalStrategy(
-    // Our company will sign in using an email, rather than a "companyname"
+    // usernameField is set to "email" which is a column on the companies table.  This is the field we are using for authentication.
     {
       usernameField: "email",
     },
     function (email, password, done) {
-      // When a company tries to sign in this code runs
+      // When a company tries to sign in this code runs.
       db.Company.findOne({
         where: {
           email: email,
@@ -29,7 +29,7 @@ passport.use(
             message: "Incorrect password.",
           });
         }
-        // If none of the above, return the company
+        // If none of the above, return the company object.
         return done(null, dbCompany);
       });
     }
