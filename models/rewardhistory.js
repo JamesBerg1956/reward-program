@@ -24,18 +24,24 @@ module.exports = function (sequelize, DataTypes) {
   );
 
   rewardhistory.associate = function (models) {
-    rewardhistory.belongsTo(models.Customer, {
-      foreignKey: {
-        allowNull: false,
-        name: "customer_id",
-      },
-    });
-    rewardhistory.belongsTo(models.Rewards, {
-      foreignKey: {
-        allowNull: false,
-        name: "reward_id",
-      },
-    });
+    //
+    rewardhistory.belongsTo(models.Customer);
+    //
+    rewardhistory.belongsTo(models.Rewards);
+    //
+    // The following does not work and I dont know why!!!!
+    //
+    // rewardhistory.belongsTo(models.Customer, {
+    //   foreignKey: {
+    //     allowNull: false,
+    //   },
+    // });
+    //
+    // rewardhistory.belongsTo(models.Rewards, {
+    //   foreignKey: {
+    //     allowNull: false,
+    //   },
+    // });
   };
   return rewardhistory;
 };
