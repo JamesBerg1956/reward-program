@@ -8,7 +8,7 @@
       name="viewport"
       content="width=device-width, initial-scale=1, shrink-to-fit=no"
     />
-
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
     <!-- Bootstrap CSS -->
     <link
       rel="stylesheet"
@@ -16,6 +16,30 @@
       integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T"
       crossorigin="anonymous"
     />
+    <style>
+      @media (min-width:576px){
+        #phoneContainer{
+          width: 576px;
+        }
+      }
+      @media (min-width:768){
+        #phoneContainer{
+          width: 768px;
+        }
+      }
+      button > span {
+        font-size: 2.5rem;
+      }
+      .number{
+        padding-top:20%; padding-bottom:20%;
+      }
+      .find{
+        padding-top:20%; padding-bottom:20%;
+      }
+      .backspace{
+        padding-top:20%; padding-bottom:20%;
+      }
+    </style>
   </head>
   <body>
     <!--TODO: add bootstrap nav Points Rewards Customer-->
@@ -46,6 +70,220 @@
     </nav>
     <!--END bootstrap nav -->
 
+<<<<<<< HEAD
+    <h1 class="text-center">Add Points</h1>
+    <hr/>
+  
+    <!--TODO: make phoneContainer height responsive-->
+
+    <!--START bootstrap container -->
+    <div class="container d-block" id="phoneContainer">
+      <!--START bootstrap row - phone input-->
+      <div class="row">
+        <!--START bootstrap col -phone input-->
+        <div class="col-12">
+          <!--START bootstrap card - phone input-->
+          <div class="card">
+            <h2 class="card-header">Customer Phone#</h2>
+            <!--START bootstrap card-body - phone input-->
+            <div class="card-body">
+              <h3 id="phoneinput">&nbsp;</h3>
+            </div>
+            <!--END bootstrap card-body - phone input-->
+          </div>
+          <!--END bootstrap card - phone input-->
+        </div>
+        <!--START bootstrap col -phone input-->
+      </div>
+      <!--END bootstrap row - phone input-->
+      <!--START bootstrap row - numbers 1 2 3-->
+      <div class="row">
+        <!--START bootstrap col - number 1-->
+        <div class="col-4">
+          <button id="button-1" class="btn btn-primary btn-block number" value="1"><span>1</span></button>
+        </div>
+        <!--END bootstrap col - number 1-->
+        <!--START bootstrap col - number 2-->
+        <div class="col-4">
+          <button id="button-2" class="btn btn-primary btn-block number" value="2"><span>2</span></button>
+        </div>
+        <!--END bootstrap col - number 2-->
+        <!--START bootstrap col - number 3-->
+        <div class="col-4">
+          <button id="button-3" class="btn btn-primary btn-block number" value="3"><span>3</span></button>
+        </div>
+        <!--END bootstrap col - number 3-->
+      </div>
+      <!--END bootstrap row - numbers 1 2 3-->
+      <br/>
+      <!--START bootstrap row - numbers 4 5 6-->
+      <div class="row">
+        <!--START bootstrap col - number 4-->
+        <div class="col-4">
+          <button id="button-4" class="btn btn-primary btn-block number" value="4"><span>4</span></button>
+        </div>
+        <!--END bootstrap col - number 4-->
+        <!--START bootstrap col - number 5-->
+        <div class="col-4">
+          <button id="button-5" class="btn btn-primary btn-block number" value="5"><span>5</span></button>
+        </div>
+        <!--END bootstrap col - number 5-->
+        <!--START bootstrap col - number 6-->
+        <div class="col-4">
+          <button id="button-6" class="btn btn-primary btn-block number" value="6"><span>6</span></button>
+        </div>
+        <!--END bootstrap col - number 6-->
+      </div>
+      <!--END bootstrap row - numbers 4 5 6-->
+      <br/>
+      <!--START bootstrap row - numbers 7 8 9-->
+      <div class="row">
+        <!--START bootstrap col - number 7-->
+        <div class="col-4">
+          <button id="button-7" class="btn btn-primary btn-block number" value="7"><span>7</span></button>
+        </div>
+        <!--END bootstrap col - number 7-->
+        <!--START bootstrap col - number 8-->
+        <div class="col-4">
+          <button id="button-8" class="btn btn-primary btn-block number" value="8"><span>8</span></button>
+        </div>
+        <!--END bootstrap col - number 8-->
+        <!--START bootstrap col - number 9-->
+        <div class="col-4">
+          <button id="button-9" class="btn btn-primary btn-block number" value="9"><span>9</span></button>
+        </div>
+        <!--END bootstrap col - number 9-->
+      </div>
+      <!--END bootstrap row - numbers 7 8 9-->
+      <br/>
+      <!--START bootstrap row - back 0 find-->
+      <div class="row">
+        <!--START bootstrap col - backspace-->
+        <div class="col-4">
+          <button id="button-backspace" class="btn btn-secondary btn-block backspace"><span>&lt;=</span></button>
+        </div>
+        <!--END bootstrap col - backspace-->
+        <!--START bootstrap col - number 0-->
+        <div class="col-4">
+          <button id="button-0" class="btn btn-primary btn-block number" value="0"><span>0</span></button>
+        </div>
+        <!--END bootstrap col - number 0-->
+        <!--START bootstrap col - find-->
+          <div class="col-4">
+            <button id="button-phoneSubmit" class="btn btn-success btn-block find"><span>Find</span></button>
+          </div>
+        <!--END bootstrap col - find-->
+      </div>
+      <!--END bootstrap row - back 0 find-->
+    </div>
+    <!--END bootstrap container -->
+
+    <!--START bootstrap container - addPointsContainer-->
+    <div class="container d-none" id="addPointsContainer">
+      <!--START bootstrap row - customer info-->
+      <div class="row">
+        <!--START bootstrap col - first_name-->
+        <div class="col-2">
+          <span class="h4" id="first_nameSpan"></span>
+        </div>
+        <!--END bootstrap col - first_name-->
+        <!--START bootstrap col - last_name-->
+        <div class="col-2">
+          <span class="h4" id="last_nameSpan"></span>
+        </div>
+        <!--END bootstrap col - last_name-->
+        <!--START bootstrap col - email-->
+        <div class="col-8">
+          <span class="h4" id="emailSpan"></span>
+        </div>
+        <!--END bootstrap col - email-->
+      </div>
+      <!--END bootstrap row - customer info-->
+      <br/>
+      <!--START bootstrap row - addPointsForm-->
+      <div class="row">
+        <!--START bootstrap input-group - addPointsForm-->
+        <div class="input-group">
+          <!--START bootstrap input-group-prepend-->
+          <div class="input-group-prepend" id="plusButtons">
+            <button class="btn btn-lg btn-primary mr-4 plus" type="button" id="plus50" value="50">+50</button>
+            <button class="btn btn-lg btn-primary mr-4 plus" type="button" id="plus20" value="20">+20</button>
+            <button class="btn btn-lg btn-primary mr-4 plus" type="button" id="plus10" value="10">+10</button>
+            <button class="btn btn-lg btn-primary mr-4 plus" type="button" id="plus5" value="5">+5</button>
+            <button class="btn btn-lg btn-primary mr-4 plus" type="button" id="plus1" value="1">+1</button>
+            </button>
+          </div>
+          <!--END bootstrap input-group-prepend-->
+          <input type="text" class="form-control mt-1 mr-4" placeholder="0" id="addPointsInput" aria-label="Add points for customer" aria-describedby="plusButtons">
+          <!--START bootstrap input-group-append--->
+          <div class="input-group-append">
+            <button class="btn btn-success" type="button" id="addPointsSubmit">Add Points</button>
+          </div>
+          <!--END bootstrap input-group-append--->
+        </div>
+        <!--END bootstrap input-group - addPointsForm-->
+      </div>
+      <!--END bootstrap row - addPointsForm-->
+
+      <!--START bootstrap row - rewards carousel-->
+      <div class="row">
+        <!--START bootsrap carousel - rewards carousel-->
+        <div id="rewardsCarousel" class="carousel slide" data-ride="carousel">
+          <ol class="carousel-indicators">
+            <!--TODO: dynamically add li elements for each reward-->
+          </ol>
+          <div class="carousel-inner">
+            <!--TODO: dynamically add div.carousel-item elements for each reward-->
+              <!--TODO: dynamically add cards representing rewards-->
+          </div>
+          <a href="#rewardsCarousel" class="carousel-control-prev" role="button" data-slide="prev">
+            <span class="carousel-control-prev-icon" aria-hidden="true"></span>
+            <span class="sr-only">Previous</span>
+          </a>
+          <a href="#rewardsCarousel" class="carousel-control-next" role="button"data-slide="next">
+            <span class="carousel-control-next-icon" aria-hidden="true"></span>
+            <span class="sr-only">Next</span>
+          </a>
+        </div>
+        <!--END bootsrap carousel - rewards carousel-->
+      </div>
+      <!--START bootstrap row - rewards carousel-->
+          <!--TODO: bootstrap col - rewards carousel-->
+
+            <!--TODO: bootstrap carousel slide-->
+
+              <!--TODO: bootstrap carousel inner-->
+
+                <!--TODO: dynamically add carousel-item-->
+
+                  <!--TODO: dynamically add card -->
+
+                    <!--TODO: dynamicall add card-body -->
+
+                      <!--TODO: dynamically add h5 card-title - reward_name -->
+
+                      <!--TODO: dynamically add p card-text - reward_description-->
+
+                        <!--TODO: dynamically add a btn btn-primary - reward_points-->
+
+    </div>
+    <!--END bootstrap container - addPointsContainer-->
+
+      
+    <!--TODO: end container start table - info from rewardhistories joined with  -->
+      <!--TODO: thead-->
+        <!--TODO: tr-->
+          <!--TODO: th scope=col - id-->
+          <!--TODO: th scope=col - points_change-->
+          <!--TODO: th scope=col - rewards.reward_name-->
+          <!--TODO: th scope=col - createdAt-->
+      <!--TODO: tbody-->
+        <!--TODO: tr - dynamically add to tbody-->
+          <!--TODO td - dynamically add to tr - id -->
+          <!--TODO td - dynamically add to tr - points_change -->
+          <!--TODO td - dynamically add to tr - rewards.reward_name -->
+          <!--TODO td - dynamically add to tr - createdAt -->
+=======
     <!--TODO: bootstrap container -->
 
     <!--TODO: bootstrap row - Points h1-->
@@ -111,6 +349,7 @@
     <!--TODO: dynamically add h5 card-title - reward_name -->
 
     <!--TODO: dynamically add p card-text - reward_description-->
+>>>>>>> 314a3d1391ffbf5847d9e06fb5793d50a01b2c72
 
     <!--TODO: dynamically add a btn btn-primary - reward_points-->
 
@@ -130,16 +369,6 @@
 
     <!-- Optional JavaScript -->
     <!-- jQuery first, then Popper.js, then Bootstrap JS -->
-    <script
-      src="https://code.jquery.com/jquery-3.3.1.slim.min.js"
-      integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo"
-      crossorigin="anonymous"
-    ></script>
-    <script
-      src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.7/umd/popper.min.js"
-      integrity="sha384-UO2eT0CpHqdSJQ6hJty5KVphtPhzWj9WO1clHTMGa3JDZwrnQq4sF86dIHNDz0W1"
-      crossorigin="anonymous"
-    ></script>
     <script
       src="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js"
       integrity="sha384-JjSmVgyd0p3pXB1rRibZUAYoIIy6OrQ6VrjIEaFf/nJGzIxFDsf4x0xIM+B07jRM"

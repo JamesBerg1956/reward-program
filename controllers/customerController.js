@@ -21,8 +21,7 @@ router.get("/api/customer/", (req, res) => {
 
 // find a single customer
 router.get("/api/customer/:phone", (req, res) => {
-  console.log('router.get("/api/customer/:phone"');
-  db.Customer.findOne({
+  db.Customer.findAll({
     where: {
       phone: req.params.phone,
     },

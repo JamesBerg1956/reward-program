@@ -27,10 +27,10 @@ app.use(require("./controllers/authController.js"));
 app.use(require("./controllers/companyController.js"));
 app.use(require("./controllers/rewardsController.js"));
 app.use(require("./controllers/customerController.js"));
-app.use(require("./controllers/rewardhistoryController.js"));
+app.use(require("./controllers/rewardHistoryController.js"));
 
 // Syncing our database and logging a message to the user upon success
-db.sequelize.sync({ force: true }).then(function () {
+db.sequelize.sync().then(function () {
   app.listen(PORT, function () {
     console.log(
       "==> 🌎  Listening on port %s. Visit http://localhost:%s/ in your browser.",
