@@ -63,6 +63,7 @@ $(document).ready(function () {
 
     })
     .then(generateRewardHistory)
+    .then(generateRewardsCarousel)
     .catch(function(error){
       console.log(error);
     });
@@ -122,7 +123,10 @@ $(document).ready(function () {
   // END generateRewardHistory function
 
   // START generateRewardsCarousel function
-  
+  function generateRewardsCarousel(){
+    // call ajax GET on rewards where Companyid = id
+    const company_id = sessionStorage.getItem("CompanyId");
+  }
   // END generateRewardsCarousel function
 
 });
