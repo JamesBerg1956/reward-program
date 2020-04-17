@@ -23,11 +23,12 @@ module.exports = function (sequelize, DataTypes) {
 
   Rewards.associate = function (models) {
     Rewards.belongsTo(models.Company, {
-      company_id: {
+      foreignKey: {
         allowNull: false,
+        name: "company_id",
       },
     });
-    Rewards.hasMany(models.rewardhistory, {});
+    Rewards.hasMany(models.rewardhistory);
   };
   return Rewards;
 };

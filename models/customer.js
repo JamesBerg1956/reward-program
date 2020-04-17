@@ -22,19 +22,16 @@ module.exports = function (sequelize, DataTypes) {
       type: DataTypes.BOOLEAN,
       allowNull: false,
     },
-    // CompanyID: {
-    //   type: DataTypes.INTEGER,
-    //   allowNull: false,
-    // },
   });
 
   Customer.associate = function (models) {
     Customer.belongsTo(models.Company, {
-      CompanyID: {
+      foreignKey: {
         allowNull: false,
+        name: "company_id",
       },
     });
-    Customer.hasMany(models.rewardhistory, {});
+    Customer.hasMany(models.rewardhistory);
   };
   return Customer;
 };
