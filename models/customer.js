@@ -23,7 +23,7 @@ module.exports = function (sequelize, DataTypes) {
       allowNull: false,
     },
   });
-
+  //
   Customer.associate = function (models) {
     Customer.belongsTo(models.Company);
     Customer.hasMany(models.rewardhistory);
@@ -36,5 +36,19 @@ module.exports = function (sequelize, DataTypes) {
     //   },
     // });
   };
+  // The following DOES NOT work!!!!!  I do not know why!!!!
+  //
+  // Customer.associate = function (models) {
+  //   Customer.belongsTo(models.Company, {
+  //     company_id: {
+  //       allowNull: false,
+  //     },
+  //   });
+  //   Customer.hasMany(models.rewardhistory, {
+  //     foreignKey: {
+  //       allowNull: false,
+  //     },
+  //   });
+  // };
   return Customer;
 };

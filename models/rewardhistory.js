@@ -24,6 +24,7 @@ module.exports = function (sequelize, DataTypes) {
   );
 
   rewardhistory.associate = function (models) {
+
     rewardhistory.belongsTo(models.Customer);
     rewardhistory.belongsTo(models.Rewards);
     // Does not WORK!!!
