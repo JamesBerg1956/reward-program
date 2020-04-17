@@ -10,6 +10,18 @@ router.get("/api/rewardhistory/", (req, res) => {
     .catch((error) => res.status(500).json(error));
 });
 
+// find rewardhistory for single customer
+router.get("/api/rewardhistory/:CustomerId", (req, res) => {
+  db.rewardhistory
+    .findAll({
+      where: {
+        CustomerId: req.params.CustomerId,
+      },
+    })
+    .then((response) => res.status(200).json(response))
+    .catch((error) => res.status(500).json(error));
+});
+
 // post a rewardhistory.
 router.post("/api/rewardhistory/", (req, res) => {
   db.rewardhistory
