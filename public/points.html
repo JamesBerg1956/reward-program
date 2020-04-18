@@ -233,9 +233,10 @@
         <!--END bootstrap input-group - addPointsForm-->
       </div>
       <!--END bootstrap row - addPointsForm-->
-
+      <br>
       <!--START bootstrap row - rewards carousel-->
       <div class="row">
+        <!--START bootstrap col - rewards carousel-->
         <div class="col-12 text-center">
           <!--START bootsrap carousel - rewards carousel-->
           <div id="rewardsCarousel" class="carousel slide" data-ride="carousel">
@@ -245,6 +246,7 @@
             <div class="carousel-inner">
             
             </div>
+            <!--TODO: make paging arrows visible - make card background grey?-->
             <a href="#rewardsCarousel" class="carousel-control-prev" role="button" data-slide="prev">
               <span class="carousel-control-prev-icon" aria-hidden="true"></span>
               <span class="sr-only">Previous</span>
@@ -256,59 +258,33 @@
           </div>
           <!--END bootsrap carousel - rewards carousel-->
         </div>
+        <!--END bootstrap col - rewards carousel-->
       </div>
-      <!--START bootstrap row - rewards carousel-->
-          <!--TODO: bootstrap col - rewards carousel-->
-
-            <!--TODO: bootstrap carousel slide-->
-
-              <!--TODO: bootstrap carousel inner-->
-
-                <!--TODO: dynamically add carousel-item-->
-
-                  <!--TODO: dynamically add card -->
-
-                    <!--TODO: dynamicall add card-body -->
-
-                      <!--TODO: dynamically add h5 card-title - reward_name -->
-
-                      <!--TODO: dynamically add p card-text - reward_description-->
-
-                        <!--TODO: dynamically add a btn btn-primary - reward_points-->
-
+      <!--END bootstrap row - rewards carousel-->
+      <!--START bootstrap table.table-->
+      <table class="table">
+        <!--START thead-->
+        <thead>
+          <!--START tr#theadTrRewardsHistory-->
+          <tr id="theadTrRewardHistory">
+            <th scope="col">id</th>
+            <th scope="col">Point Change</th>
+            <th scope="col">Reward</th>
+            <th scope="col">Created At</th>
+          </tr>
+          <!--END tr#theadTrRewardsHistory-->
+        </thead>
+        <!--END thead-->
+        <!--START tbody#tbodyRewardsHistory-->
+        <tbody id="tbodyRewardHistory">
+          <!--TODO: dynamically generate tr elements for each record in arrRewardHistory-->
+            <!--TODO: dynamically generate td elements for each keyvalue in current record of arrRewardHistory-->
+        </tbody>
+        <!--END tbody#tbRewardsHistory-->
+      </table>
+      <!--END bootstrap table.table-->
     </div>
     <!--END bootstrap container - addPointsContainer-->
-
-      
-    <!--TODO: end container start table - info from rewardhistories joined with  -->
-      <!--TODO: thead-->
-        <!--TODO: tr-->
-          <!--TODO: th scope=col - id-->
-          <!--TODO: th scope=col - points_change-->
-          <!--TODO: th scope=col - rewards.reward_name-->
-          <!--TODO: th scope=col - createdAt-->
-      <!--TODO: tbody-->
-        <!--TODO: tr - dynamically add to tbody-->
-          <!--TODO td - dynamically add to tr - id -->
-          <!--TODO td - dynamically add to tr - points_change -->
-          <!--TODO td - dynamically add to tr - rewards.reward_name -->
-          <!--TODO td - dynamically add to tr - createdAt -->
-
-    <!--TODO: dynamically add a btn btn-primary - reward_points-->
-
-    <!--TODO: end container start table - info from rewardhistoryories joined with  -->
-    <!--TODO: thead-->
-    <!--TODO: tr-->
-    <!--TODO: th scope=col - id-->
-    <!--TODO: th scope=col - points_change-->
-    <!--TODO: th scope=col - rewards.reward_name-->
-    <!--TODO: th scope=col - createdAt-->
-    <!--TODO: tbody-->
-    <!--TODO: tr - dynamically add to tbody-->
-    <!--TODO td - dynamically add to tr - id -->
-    <!--TODO td - dynamically add to tr - points_change -->
-    <!--TODO td - dynamically add to tr - rewards.reward_name -->
-    <!--TODO td - dynamically add to tr - createdAt -->
 
     <!-- Optional JavaScript -->
     <!-- jQuery first, then Popper.js, then Bootstrap JS -->

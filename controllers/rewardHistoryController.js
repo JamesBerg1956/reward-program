@@ -17,6 +17,7 @@ router.get("/api/rewardhistory/:CustomerId", (req, res) => {
       where: {
         CustomerId: req.params.CustomerId,
       },
+      include: [db.Rewards],
     })
     .then((response) => res.status(200).json(response))
     .catch((error) => res.status(500).json(error));

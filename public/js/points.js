@@ -1,3 +1,4 @@
+// START document.ready
 $(document).ready(function () {
 
   var arrPhoneInput = [];
@@ -115,9 +116,56 @@ $(document).ready(function () {
       // sum points_added from rewardhistory and assign it to #currentPointsSpan
       let pointTotal = 0;
       for (let i = 0; i < arrRewardHistory.length; i++) {
-        pointTotal += arrRewardHistory[i].points_change;
+        
+        const currentRewardHistory = arrRewardHistory[i];
+
+        // accumulate point total
+        pointTotal += currentRewardHistory.points_change;
+
+        // create tr element for tbodyRewardHistory
+        const tr = $("<tr>");
+
+        // create td element for id
+        const tdId = $("<td>");
+
+        // add currentRewardHistory.id to td element text
+        tdId.text(currentRewardHistory.id);
+        
+        // create td element for points_change
+        const tdPointsChange = $("<td>");
+
+        // add currentRewardHistory.points_change to td element text
+        tdPointsChange.text(currentRewardHistory.points_change);
+        
+        // create td element for reward
+        const tdReward = $("<td>");
+
+        // check if currentRewardHistory.Reward exists
+        if(currentRewardHistory.Reward){
+          // add currentRewardHistory.Reward.reward_name to td element text
+          tdReward.text(currentRewardHistory.Reward.reward_name);
+        }
+        else{
+          tdReward.text("&nbsp;");
+        }
+        
+        // create td element for createdAt
+        const tdCreatedAt = $("<td>");
+
+        // add currentRewardHistory.createdAt to td element text
+        // TODO: format date
+        tdCreatedAt.text(currentRewardHistory.createdAt);
+        
+        // append td elements to tr element
+        tr.append(tdId, tdPointsChange, tdReward, tdCreatedAt);
+
+        // append tr element to tbodyRewardHistory
+        $("#tbodyRewardHistory").append(tr);
+
       }
+
       $("#currentPointsSpan").text(pointTotal);
+
     });
   }
   // END generateRewardHistory function
@@ -134,9 +182,10 @@ $(document).ready(function () {
       "timeout": 0,
     };
     
+    // START ajax promise
     $.ajax(settings).done(function (arrObjRewards) {
 
-      // loop through arrObjRewards
+      // START loop through arrObjRewards
       for (let i = 0; i < arrObjRewards.length; i++) {
         
         // get current reward object
@@ -151,6 +200,7 @@ $(document).ready(function () {
         $(".carousel-indicators").append(liCarouselIndicator);
         
         // create div.carousel-item(s) - if i === 0 then .active
+        // TODO: make page indicators appear below buttons
         const divCarouselItem = $("<div>")
         if(i === 0){divCarouselItem.addClass("carousel-item active")}else{divCarouselItem.addClass("carousel-item")}
         
@@ -173,10 +223,12 @@ $(document).ready(function () {
         pCardText.text(objReward.reward_description);
         
         // create a.btn btn-success
-        const aBtn = $("<a href='#' class='btn btn-primary'></a>");
+        const aBtn = $("<a href='#' class='btn btn-lg btn-success'></a>");
+
+        // TODO: disable aBtn if objReward.active === false
 
         // add arrObj[i].reward_points to a.btn btn-success
-        aBtn.text(objReward.reward_points + "Points");
+        aBtn.text(objReward.reward_points + "Points\nREDEEM");
         
         // TODO: add event listener to button
 
@@ -199,10 +251,13 @@ $(document).ready(function () {
         $(".carousel-inner").append(divCarouselItem);
       
       }
+      // END loop through arrObjRewards
 
     });
+    // END ajax promise
 
   }
   // END generateRewardsCarousel function
 
 });
+// END document.ready
