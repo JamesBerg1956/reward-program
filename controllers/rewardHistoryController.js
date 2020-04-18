@@ -11,12 +11,13 @@ router.get("/api/rewardhistory/", (req, res) => {
 });
 
 // find rewardhistory for single customer
-router.get("/api/rewardhistory/:CustomerId", (req, res) => {
+router.get("/api/rewardhistory/:customer_id", (req, res) => {
   db.rewardhistory
     .findAll({
       where: {
-        CustomerId: req.params.CustomerId,
+        customer_id: req.params.customer_id,
       },
+      include: [db.Rewards],
     })
     .then((response) => res.status(200).json(response))
     .catch((error) => res.status(500).json(error));

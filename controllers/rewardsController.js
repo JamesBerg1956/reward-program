@@ -3,11 +3,11 @@ const router = express.Router();
 const db = require("../models");
 
 // find all rewards tied to a business.
-router.get("/api/rewards/:id", (req, res) => {
+router.get("/api/rewards/:CompanyId", (req, res) => {
   console.log("router.get('/api/rewards/:id'");
   db.Rewards.findAll({
     where: {
-      company_id: req.params.id,
+      CompanyId: req.params.CompanyId,
     },
   })
     .then((response) => res.status(200).json(response))
