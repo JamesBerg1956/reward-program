@@ -25,13 +25,15 @@ module.exports = function (sequelize, DataTypes) {
 
   rewardhistory.associate = function (models) {
     rewardhistory.belongsTo(models.Customer, {
-      customer_id: {
+      foreignKey: {
         allowNull: false,
+        name: "customer_id",
       },
     });
     rewardhistory.belongsTo(models.Rewards, {
-      reward_id: {
+      foreignKey: {
         allowNull: false,
+        name: "reward_id",
       },
     });
   };

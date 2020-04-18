@@ -22,10 +22,6 @@ module.exports = function (sequelize, DataTypes) {
       type: DataTypes.BOOLEAN,
       allowNull: false,
     },
-    // CompanyID: {
-    //   type: DataTypes.INTEGER,
-    //   allowNull: false,
-    // },
   });
 
   Customer.associate = function (models) {
@@ -34,7 +30,7 @@ module.exports = function (sequelize, DataTypes) {
         allowNull: false,
       },
     });
-    Customer.hasMany(models.rewardhistory, {});
+    Customer.hasMany(models.rewardhistory);
   };
   return Customer;
 };
