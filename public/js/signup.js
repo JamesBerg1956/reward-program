@@ -22,6 +22,8 @@ $(document).ready(function () {
       !userData.companyName ||
       !userData.phoneNumber
     ) {
+      $("#alert .msg").text("All fields must be entered");
+      $("#alert").fadeIn(500);
       return;
     }
     // If we have an email and password, run the signUpUser function
@@ -33,6 +35,8 @@ $(document).ready(function () {
     );
     emailInput.val("");
     passwordInput.val("");
+    companyNameInput.val("");
+    phoneNumberInput.val("");
     // phoneNumber.val(""); SMH - Why doesn't this work?
     // companyName.val("");
   });
@@ -40,7 +44,6 @@ $(document).ready(function () {
   // Does a post to the signup route. If successful, we are redirected to the members page
   // Otherwise we log any errors
   function signUpUser(email, password, company_name, phone) {
-    console.log("posting");
     $.post("/api/signup", {
       email: email,
       password: password,
@@ -49,22 +52,24 @@ $(document).ready(function () {
       active: "1",
     })
       .then(function (data) {
-        console.log("post api/signup");
         window.location.replace("/points");
         // If there's an error, handle it by throwing up a bootstrap alert
       })
       .catch(handleLoginErr);
-    // catch(function (handleLoginErr) {
-    //   console.log("ERROR!!!!");
-    //   console.log(handleLoginErr);
-    // });
-
-    // .catch(handleLoginErr);
   }
 
   function handleLoginErr(err) {
-    // console.log(err.responseJSON);
-    $("#alert .msg").text(err.responseJSON);
+    // console.log("got to error");
+    // var errorNumber = err.responseJSON.parent.errno;
+    // if (errorNumber == 1062) {
+    //   errorMessage = "You already have an account.";
+    //   errorMessage = errorMessage.link("/login");
+    // } else {
+    //   errorMessage = "Unknown Error";
+    // }
+    errorMessage = "Unknown Error";
+    // switch (errorNumber) {
+    $("#alert .msg").html(errorMessage);
     $("#alert").fadeIn(500);
   }
 });
