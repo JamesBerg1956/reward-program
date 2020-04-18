@@ -92,7 +92,7 @@ $(document).ready(function () {
       "timeout": 0,
       "data": {
         "points_change": $("#addPointsInput").val(),
-        "CustomerId": customerId
+        "customer_id": customerId
       }
     };
     
@@ -103,6 +103,10 @@ $(document).ready(function () {
 
   // START generateRewardHistory function
   function generateRewardHistory(){
+    
+    //remove all elements from $("#tbodyRewardHistory")
+    $("#tbodyRewardHistory").empty();
+    
     // call ajax GET on rewardhistories where id = customerId
     const settings = {
       "url": "/api/rewardhistory/"+customerId,
