@@ -32,7 +32,7 @@ module.exports = function (sequelize, DataTypes) {
     });
     rewardhistory.belongsTo(models.Rewards, {
       foreignKey: {
-        allowNull: false,
+        allowNull: true,
         name: "reward_id",
       },
     });
