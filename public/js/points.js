@@ -124,8 +124,56 @@ $(document).ready(function () {
 
   // START generateRewardsCarousel function
   function generateRewardsCarousel(){
-    // call ajax GET on rewards where Companyid = id
-    const company_id = sessionStorage.getItem("CompanyId");
+    // Get currently logged on company
+    const CompanyId = sessionStorage.getItem("CompanyId");
+
+    // call ajax to get all rewards where CompanyId = CompanyId
+    var settings = {
+      "url": "/api/rewards/"+CompanyId,
+      "method": "GET",
+      "timeout": 0,
+    };
+    
+    $.ajax(settings).done(function (arrObjRewards) {
+
+      // loop through arrObjRewards
+
+        // create li carousel indicator(s) data-slide-to=[i] if i === 0 then .activ
+
+        // append li carousel indicator to ol.carousel-indicators
+
+        // create div.carousel-item(s) - if i === 0 then .active
+
+        // create div.card
+
+        // create div.card-body
+
+        // create h5.card-title
+
+        // add arrObj[i].reward_name to h5.card-title
+
+        // create p.card-text
+
+        // add arrObj[i].reward_description to p.card-text
+
+        // create a.btn btn-success
+
+        // add arrObj[i].reward_points to a.btn btn-success
+
+        // append h5.card-title to div.card-body
+
+        // append p.card-text to div.card-body
+
+        // append a.btn btn-success to div.card-body
+
+        // append div.card-body to div.card
+
+        // append div.card to div.carousel-item
+
+        // append div.carousel-item to div.carousel-inner
+
+    });
+
   }
   // END generateRewardsCarousel function
 
