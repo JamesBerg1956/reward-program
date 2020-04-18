@@ -32,8 +32,10 @@ router.get("/api/customer/:phone", (req, res) => {
 
 // post a customer
 router.post("/api/customer/", (req, res) => {
+  console.log("/api/customer/");
   // If they are not logged in, req.user.id will be undefined.  Then when we set it to req.body.CompanyID and send it to create the record, it will fail due to the req.body.CompanyID cannot be null.
-  req.body.CompanyID = req.user.id;
+  req.body.CustomerId = req.user.id;
+  console.log(req.body);
   db.Customer.create(req.body)
     .then((response) => res.status(200).json(response))
     .catch((error) => res.status(500).json(error));

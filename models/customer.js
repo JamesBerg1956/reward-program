@@ -23,14 +23,32 @@ module.exports = function (sequelize, DataTypes) {
       allowNull: false,
     },
   });
-
+  //
   Customer.associate = function (models) {
-    Customer.belongsTo(models.Company, {
-      company_id: {
-        allowNull: false,
-      },
-    });
+    Customer.belongsTo(models.Company);
     Customer.hasMany(models.rewardhistory);
+    //
+    // Does not work!
+    // Customer.belongsTo(models.Company, {
+    //   foreignKey: {
+    //     allowNull: false,
+    //     name: "company_id",
+    //   },
+    // });
   };
+  // The following DOES NOT work!!!!!  I do not know why!!!!
+  //
+  // Customer.associate = function (models) {
+  //   Customer.belongsTo(models.Company, {
+  //     company_id: {
+  //       allowNull: false,
+  //     },
+  //   });
+  //   Customer.hasMany(models.rewardhistory, {
+  //     foreignKey: {
+  //       allowNull: false,
+  //     },
+  //   });
+  // };
   return Customer;
 };
