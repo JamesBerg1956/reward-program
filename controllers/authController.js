@@ -25,6 +25,7 @@ router.post("/api/login", passport.authenticate("local"), function (req, res) {
 // how we configured our Sequelize company Model. If the company is created successfully, proceed to log the user in,
 // otherwise send back an error
 router.post("/api/signup", function (req, res) {
+  console.log("Trying to post");
   db.Company.create({
     email: req.body.email,
     password: req.body.password,
@@ -37,6 +38,7 @@ router.post("/api/signup", function (req, res) {
       res.redirect(307, "/api/login");
     })
     .catch(function (err) {
+      console.log("caught the error");
       res.status(401).json(err);
     });
 });
