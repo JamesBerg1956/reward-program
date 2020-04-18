@@ -137,40 +137,68 @@ $(document).ready(function () {
     $.ajax(settings).done(function (arrObjRewards) {
 
       // loop through arrObjRewards
+      for (let i = 0; i < arrObjRewards.length; i++) {
+        
+        // get current reward object
+        const objReward = arrObjRewards[i];
 
         // create li carousel indicator(s) data-slide-to=[i] if i === 0 then .activ
+        const liCarouselIndicator = $("<li data-target='#rewardsCarousel' data-slide-to='"+[i]+"'></li>");
+        // first elements should have class="active"
+        if(i === 0){liCarouselIndicator.addClass("active");}
 
         // append li carousel indicator to ol.carousel-indicators
-
+        $(".carousel-indicators").append(liCarouselIndicator);
+        
         // create div.carousel-item(s) - if i === 0 then .active
-
+        const divCarouselItem = $("<div>")
+        if(i === 0){divCarouselItem.addClass("carousel-item active")}else{divCarouselItem.addClass("carousel-item")}
+        
         // create div.card
-
+        const divCard = $("<div class='card'>");
+        
         // create div.card-body
-
+        const divCardBody = $("<div class='card-body'>");
+        
         // create h5.card-title
+        const h5CardTitle = $("<h5 class='card-title'>");
 
         // add arrObj[i].reward_name to h5.card-title
-
+        h5CardTitle.text(objReward.reward_name);
+        
         // create p.card-text
+        const pCardText = $("<p class='card-text'>");
 
         // add arrObj[i].reward_description to p.card-text
-
+        pCardText.text(objReward.reward_description);
+        
         // create a.btn btn-success
+        const aBtn = $("<a href='#' class='btn btn-primary'></a>");
 
         // add arrObj[i].reward_points to a.btn btn-success
+        aBtn.text(objReward.reward_points + "Points");
+        
+        // TODO: add event listener to button
 
         // append h5.card-title to div.card-body
-
+        divCardBody.append(h5CardTitle);
+        
         // append p.card-text to div.card-body
-
+        divCardBody.append(pCardText);
+        
         // append a.btn btn-success to div.card-body
+        divCardBody.append(aBtn);
 
         // append div.card-body to div.card
+        divCard.append(divCardBody);
 
         // append div.card to div.carousel-item
-
+        divCarouselItem.append(divCard);
+        
         // append div.carousel-item to div.carousel-inner
+        $(".carousel-inner").append(divCarouselItem);
+      
+      }
 
     });
 
