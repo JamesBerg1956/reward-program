@@ -104,6 +104,9 @@ $(document).ready(function () {
   // START generateRewardHistory function
   function generateRewardHistory(){
     
+    //reset value of $("#addPointsInput")
+    $("#addPointsInput").val("");
+
     //remove all elements from $("#tbodyRewardHistory")
     $("#tbodyRewardHistory").empty();
     
