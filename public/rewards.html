@@ -8,7 +8,7 @@
       name="viewport"
       content="width=device-width, initial-scale=1, shrink-to-fit=no"
     />
-
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
     <!-- Bootstrap CSS -->
     <link
       rel="stylesheet"
@@ -45,14 +45,117 @@
     </nav>
     <!--END bootstrap nav -->
 
+    <!--START bootstrap div.container-->
+    <div class="container">
+
+      <!--START bootstrap div.row - CompanyId-->
+      <div class="row">
+        <!--START bootstrap div.col - CompanyId label-->
+        <div class="col-6">
+          <!--label for CompanyId input-->
+          <label for="CompanyIdInput">Company Id</label>
+        </div>
+        <!--END bootstrap div.col - CompanyId label-->
+        <!--START bootstrap div.col - CompanyId input - autofilled disabled-->
+        <div class="col-6">
+          <!--CompanyId input-->
+          <input type="text" id="CompanyIdInput" readonly>
+        </div>
+        <!--END bootstrap div.col - CompanyId input - autofilled disabled-->
+      </div>
+      <!--END bootstrap div.row - CompanyId-->
+
+      <!--START bootstrap div.row - reward_name-->
+      <div class="row">
+        <!--START bootstrap col - reward_name label-->
+        <div class="col-6">
+          <!--reward_name label-->
+          <label for="reward_nameInput">Reward Name</label>
+        </div>
+        <!--END bootstrap col - reward_name label-->
+        <!--START bootstrap col - reward_name input-->
+        <div class="col-6">
+          <!--reward_name input-->
+          <input type="text" id="reward_nameInput">
+        </div>
+        <!--END bootstrap col - reward_name input-->
+      </div>
+
+      <!--END bootstrap div.row - reward_name-->
+      <div class="row">
+        <!--START bootstrap div.col - reward_description label-->
+        <div class="col">
+          <!--reward_description label-->
+          <label for="reward_descriptionInput">Reward Description</label>
+        </div>
+        <!--END bootstrap div.col - reward_description label-->
+        <!--START bootstrap div.col - reward_description input-->
+        <div class="col-6">
+          <!--reward_description input-->
+          <input type="text" id="reward_descriptionInput">
+        </div>
+        <!--END bootstrap div.col - reward_description input-->
+      </div>
+      <!--START bootstrap div.row - reward_description-->
+
+      <!--END bootstrap div.row - reward_description-->
+      
+      <!--START bootstrap div.row - reward_points-->
+      <div class="row">
+        <!--START bootstrap div.col - reward_points label-->
+        <div class="col-6">
+          <!--reward_points label-->
+          <label for="reward_pointsInput">Required Points</label>
+        </div>
+        <!--END bootstrap div.col - reward_points label-->
+        <!--START bootstrap div.col - reward_points input-->
+        <div class="col-6">
+          <!--reward_points input-->
+          <input type="number" id="reward_pointsInput">
+        </div>
+        <!--END bootstrap div.col - reward_points input-->
+      </div>
+      <!--END bootstrap div.row - reward_points-->
+
+      <!--START div.row submit button-->
+      <div class="row">
+        <!--START div.col submit button-->
+        <div class="col-12">
+          <button type="button" class="btn btn-lg btn-success" id="rewardSubmit">Submit</button>
+        </div>
+        <!--END div.col submit button-->
+      </div>
+      <!--END div.row submit button-->
+
+      <!--START table.table-->
+      <table class="table">
+        <!--START thead-->
+        <thead>
+          <!--START tr-->
+            <tr>
+              <!--th columns Id, reward_name, reward_description reward_points, Active-->
+              <th scope="col">Id</th>
+              <th scope="col">Reward Name</th>
+              <th scope="col">Reward Description</th>
+              <th scope="col">Required Points</th>
+              <th scope="col">Active</th>
+            </tr>
+          <!--END tr-->
+        </thead>
+        <!--END thead-->
+        <!--START tbody-->
+        <tbody id="tbodyRewardsTable">
+         
+        </tbody>
+        <!--END tbody-->
+      </table>
+      <!--END table.table-->
+
+    </div>
+    <!--END bootstrap div.container-->
 
     <!-- Optional JavaScript -->
     <!-- jQuery first, then Popper.js, then Bootstrap JS -->
-    <script
-      src="https://code.jquery.com/jquery-3.3.1.slim.min.js"
-      integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo"
-      crossorigin="anonymous"
-    ></script>
     <script
       src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.7/umd/popper.min.js"
       integrity="sha384-UO2eT0CpHqdSJQ6hJty5KVphtPhzWj9WO1clHTMGa3JDZwrnQq4sF86dIHNDz0W1"
