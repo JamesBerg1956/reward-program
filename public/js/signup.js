@@ -60,14 +60,14 @@ $(document).ready(function () {
 
   function handleLoginErr(err) {
     // console.log("got to error");
-    // var errorNumber = err.responseJSON.parent.errno;
-    // if (errorNumber == 1062) {
-    //   errorMessage = "You already have an account.";
-    //   errorMessage = errorMessage.link("/login");
-    // } else {
-    //   errorMessage = "Unknown Error";
-    // }
-    errorMessage = "Unknown Error";
+    var errorNumber = err.responseJSON.parent.errno;
+    if (errorNumber == 1062) {
+      errorMessage = "You already have an account.";
+      errorMessage = errorMessage.link("/login");
+    } else {
+      errorMessage = "Unknown Error";
+    }
+    // errorMessage = "Unknown Error";
     // switch (errorNumber) {
     $("#alert .msg").html(errorMessage);
     $("#alert").fadeIn(500);
