@@ -104,6 +104,9 @@ $(document).ready(function () {
   // START generateRewardHistory function
   function generateRewardHistory(){
     
+    //reset value of array that tracks points to add
+    arrPlusInput.length = 0;
+
     //reset value of $("#addPointsInput")
     $("#addPointsInput").val("");
 
@@ -220,13 +223,13 @@ $(document).ready(function () {
         // create h5.card-title
         const h5CardTitle = $("<h5 class='card-title'>");
 
-        // add arrObj[i].reward_name to h5.card-title
+        // add objReward.reward_name to h5.card-title
         h5CardTitle.text(objReward.reward_name);
         
         // create p.card-text
         const pCardText = $("<p class='card-text'>");
 
-        // add arrObj[i].reward_description to p.card-text
+        // add objReward.reward_description to p.card-text
         pCardText.text(objReward.reward_description);
         
         // create a.btn btn-success
@@ -234,10 +237,46 @@ $(document).ready(function () {
 
         // TODO: disable aBtn if objReward.active === false
 
-        // add arrObj[i].reward_points to a.btn btn-success
+        // add objReward.reward_points to a.btn btn-success
         aBtn.text(objReward.reward_points + "Points\nREDEEM");
         
-        // TODO: add event listener to button
+        // add objReward.id to aBtn data-id
+        aBtn.attr("data-id", objReward.id);
+
+        // add event listener to button
+        aBtn.click(function(){
+
+          // get id of current reward
+          const rewardId = $(this).attr("data-id");
+
+          // START settings for ajax POST to rewardhistories table
+          var settings = {
+            "url": "/api/rewardhistory/",
+            "method": "POST",
+            "timeout": 0,
+            // START assign values to to be inserted into rewardhistories
+            "data": {
+              "points_change": -Math.abs(parseInt(objReward.reward_points)),
+              "customer_id": parseInt(customerId),
+              "reward_id": parseInt(rewardId)
+            }
+            // END assign values to to be inserted into rewardhistories
+          };
+          // END settings for ajax POST to rewardhistories table
+
+          // ajax POST to rewardhistories with defined settings
+          $.ajax(settings)
+
+          // START ajax promise callback function
+          .done(function (response) {
+            
+            // call generateRewardHistory() function
+            generateRewardHistory();
+
+          });
+          // END ajax promise callback function
+
+        });
 
         // append h5.card-title to div.card-body
         divCardBody.append(h5CardTitle);
@@ -265,6 +304,10 @@ $(document).ready(function () {
 
   }
   // END generateRewardsCarousel function
+
+  function redeemButtonClickEvent(aBtn, objReward){
+
+  }
 
 });
 // END document.ready
