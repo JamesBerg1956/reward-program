@@ -30,24 +30,26 @@ $(document).ready(function () {
       password: password,
     })
       .then(function (response) {
-        console.log("Here2");
-        
         // check browser support for sessionStorage
-        if (typeof(Storage) !== "undefined"){
+        if (typeof Storage !== "undefined") {
           //store response.id into session as CompanyId
           sessionStorage.setItem("CompanyId", response.id);
           // redirect to the points page
           window.location.replace("/points");
+        } else {
+          alert(
+            "This application uses session state. Please enable session state in your web browser"
+          );
         }
-        else{
-          alert("This application uses session state. Please enable session state in your web browser");
-        }
-
-        // If there's an error, log the error
       })
-      .catch(function (err) {
-        console.log("Here3");
-        console.log(err);
-      });
+      .catch(handleLoginErr);
+
+    function handleLoginErr(err) {
+      var errMsg = err.responseText;
+      emsgLink = "  Click here to signup";
+      errMsg = errMsg + emsgLink.link("/signup");
+      $("#alert .msg").html(errMsg);
+      $("#alert").fadeIn(500);
+    }
   }
 });
