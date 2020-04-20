@@ -33,11 +33,11 @@ $(document).ready(function () {
 
     // ajax get request to /api/customer/:phone
     const settings = {
-      url: "/api/customer/" + $("#phoneinput").text(),
+
+      url: "/api/customerPhone/" + $("#phoneinput").text(),
       method: "GET",
       timeout: 0,
     };
-
     $.ajax(settings)
       .then(function (response) {
         const objCustomer = response[0];
@@ -83,6 +83,7 @@ $(document).ready(function () {
       timeout: 0,
       data: {
         points_change: $("#addPointsInput").val(),
+
         // SMH - Change to CustomerId (This is what sequelized changed it to)
         CustomerId: customerId,
       },
@@ -117,7 +118,6 @@ $(document).ready(function () {
       let pointTotal = 0;
       for (let i = 0; i < arrRewardHistory.length; i++) {
         const currentRewardHistory = arrRewardHistory[i];
-
         // accumulate point total
         pointTotal += currentRewardHistory.points_change;
 
@@ -144,7 +144,8 @@ $(document).ready(function () {
           // add currentRewardHistory.Reward.reward_name to td element text
           tdReward.text(currentRewardHistory.Reward.reward_name);
         } else {
-          tdReward.text("&nbsp;");
+          tdReward.text("");
+
         }
 
         // create td element for createdAt
@@ -248,9 +249,9 @@ $(document).ready(function () {
             // START assign values to to be inserted into rewardhistories
             data: {
               points_change: -Math.abs(parseInt(objReward.reward_points)),
-              // SMH - Change to CustomerId (This is what sequelized changed it to)
               CustomerId: parseInt(customerId),
-              reward_id: parseInt(rewardId),
+              RewardId: parseInt(rewardId),
+
             },
             // END assign values to to be inserted into rewardhistories
           };
