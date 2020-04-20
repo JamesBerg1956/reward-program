@@ -34,6 +34,7 @@ $(document).ready(function () {
         if (typeof Storage !== "undefined") {
           //store response.id into session as CompanyId
           sessionStorage.setItem("CompanyId", response.id);
+          sessionStorage.setItem("company_name", response.company_name);
           // redirect to the points page
           window.location.replace("/points");
         } else {

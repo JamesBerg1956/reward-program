@@ -53,67 +53,143 @@
     </nav>
     <!--END bootstrap nav -->
     <!-- Form -->
-<div class="container">
-    <form class="newCustForm">
-      <div class="form-group">
-        <label for="inputFirstName">First Name</label>
-        <input
-          type="text"
-          class="form-control"
-          id="inputFirstName"
-          placeholder="Enter your first name"
-        />
-      </div>
-      <div class="form-group" id="custForm">
-        <label for="inputLastName">Last Name</label>
-        <input
-          type="text"
-          class="form-control"
-          id="inputLastName"
-          placeholder="Enter your first name"
-        />
-      </div>
-      <div class="form-group">
-        <label for="inputPhone">Phone Number</label>
-        <input
-          type="text"
-          class="form-control"
-          id="inputPhone"
-          placeholder="Enter your first name"
-        />
-      </div>
-      <div class="form-group">
-        <label for="inputEmail">Email address</label>
-        <input
-          type="email"
-          class="form-control"
-          id="inputEmail"
-          aria-describedby="emailHelp"
-          placeholder="Enter email"
-        />
-        <small id="emailHelp" class="form-text text-muted"
-          >We'll never share your email with anyone else.</small
-        >
-      </div>
-      <button type="submit" class="btn btn-primary">Submit</button>
-    </form>
-  </div>
-<!--  -->
-<!-- This code displays the error -->
-  <div
-    style="display: none;"
-    id="alert"
-    class="alert alert-danger"
-    role="alert"
-  >
-    <span
-      class="glyphicon glyphicon-exclamation-sign"
+    <div
+      class="modal fade"
+      id="addCustomer"
+      tabindex="-1"
+      role="dialog"
+      aria-labelledby="addCustomerLabel"
       aria-hidden="true"
-    ></span>
-    <span class="sr-only">Error:</span> <span class="msg"></span>
-  </div>
-</div>
-  <!-- This code will display the error -->
+    >
+      <div class="modal-dialog" role="document">
+        <div class="modal-content">
+          <div class="modal-header">
+            <h5 class="modal-title" id="addCustomerLabel">Modal title</h5>
+            <button
+              type="button"
+              class="close"
+              data-dismiss="modal"
+              aria-label="Close"
+            >
+              <span aria-hidden="true">&times;</span>
+            </button>
+          </div>
+          <div class="modal-body">
+            <div class="container">
+              <h1>New customer signup</h1>
+              <br />
+              <!-- new form -->
+              <form class="newCustForm">
+                <div class="form-row">
+                  <div class="col-md-4 mb-3">
+                    <label for="inputFirstName">First name</label>
+                    <input
+                      type="text"
+                      class="form-control"
+                      id="inputFirstName"
+                      placeholder="First name"
+                      required
+                    />
+                  </div>
+                  <div class="col-md-4 mb-3">
+                    <label for="inputLastName">Last name</label>
+                    <input
+                      type="text"
+                      class="form-control"
+                      id="inputLastName"
+                      placeholder="Last name"
+                      required
+                    />
+                  </div>
+                </div>
+                <div class="form-row">
+                  <div class="col-md-4 mb-3">
+                    <label for="inputPhone">Phone Number</label>
+                    <input
+                      type="text"
+                      class="form-control"
+                      id="inputPhone"
+                      placeholder="Phone Number"
+                      required
+                    />
+                  </div>
+                </div>
+                <div class="form-row">
+                  <div class="col-md-6 mb-3">
+                    <label for="inputEmail">Email</label>
+                    <input
+                      type="text"
+                      class="form-control"
+                      id="inputEmail"
+                      placeholder="Email@email.com"
+                      required
+                    />
+                  </div>
+                </div>
+                <!-- <button class="btn btn-primary" type="submit">Submit form</button> -->
+              </form>
+              <!-- end of new form  -->
+            </div>
+          </div>
+          <div class="modal-footer">
+            <div
+              style="display: none;"
+              id="alert"
+              class="alert alert-danger"
+              role="alert"
+            >
+              <span
+                class="glyphicon glyphicon-exclamation-sign"
+                aria-hidden="true"
+              ></span>
+              <span class="sr-only">Error:</span> <span class="msg"></span>
+            </div>
+            <!-- This code will display the error -->
+            <button
+              type="button"
+              class="btn btn-secondary"
+              data-dismiss="modal"
+              id="closeCustomer"
+            >
+              Close
+            </button>
+            <button type="button" id="saveCustomer" class="btn btn-primary">
+              Save changes
+            </button>
+          </div>
+        </div>
+      </div>
+    </div>
+    <!--  -->
+    <!-- This code displays the error -->
+    <div
+      style="display: none;"
+      id="alert"
+      class="alert alert-danger text-left"
+      role="alert"
+    >
+      <span
+        class="glyphicon glyphicon-exclamation-sign"
+        aria-hidden="true"
+      ></span>
+      <span class="sr-only">Error:</span> <span class="msg"></span>
+    </div>
+    <!-- This code will display the error -->
+    <div id="companyHeader"></div>
+    <!-- Model Button to add new customer -->
+    <br />
+    <button
+      type="button"
+      class="btn btn-primary"
+      data-toggle="modal"
+      data-target="#addCustomer"
+    >
+      Add New Customer
+    </button>
+    <!-- Model Button to add new customer -->
+    <!-- Show list of customers -->
+    <div class="list-group customerList"></div>
+    <!-- Show list of customers -->
     <!-- Optional JavaScript -->
     <!-- jQuery first, then Popper.js, then Bootstrap JS -->
     <!--  -->

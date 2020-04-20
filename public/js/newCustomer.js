@@ -1,13 +1,49 @@
 $(document).ready(function () {
   // Getting references to our form and inputs
-  var newCustForm = $("form.newCustForm");
+  var saveCustomer = $("#saveCustomer");
   var firstName = $("input#inputFirstName");
   var lastName = $("input#inputLastName");
   var phone = $("input#inputPhone");
   var email = $("input#inputEmail");
-
+  var customerList = $(".customerList");
+  var companyHeader = $("#companyHeader");
+  var custFocasId = "";
+  const CompanyId = sessionStorage.getItem("CompanyId");
+  //
+  buildCustList();
+  //
+  var h1Tag = $("<h1>");
+  h1Tag.text(`${sessionStorage.getItem("company_name")}`);
+  companyHeader.append(h1Tag);
+  //
+  customerList.click(function (event) {
+    custFocasId = event.target.id;
+    buildCustList(custFocasId);
+  });
+  //
+  // Build the cusomter list
+  function buildCustList(target) {
+    var custFocasId = target;
+    // const CompanyId = sessionStorage.getItem("CompanyId");
+    var url = "/api/customer/" + sessionStorage.getItem("CompanyId");
+    $.get(url, function (req, res) {
+      customerList.empty();
+      req.forEach(function (arrayItem) {
+        var aTag = $("<a>");
+        aTag.addClass("list-group-item list-group-item-action");
+        // aTag.text = `${arrayItem.firstName} - ${arrayItem.lastName}`;
+        aTag.text(
+          `${arrayItem.first_name} ${arrayItem.last_name} - ${arrayItem.phone}`
+        );
+        aTag.attr("id", arrayItem.id);
+        customerList.append(aTag);
+      });
+    });
+  }
+  // End Build Customer List
+  //
   // When the form is submitted, we validate the information is entered.
-  newCustForm.on("submit", function (event) {
+  saveCustomer.on("click", function (event) {
     console.log("Submitted");
     event.preventDefault();
     var userData = {
@@ -45,7 +81,7 @@ $(document).ready(function () {
       active: "1",
     })
       .then(function () {
-        window.location.replace("/points");
+        window.location.replace("/customers");
         // If there's an error, log the error
       })
       // .catch(function (err) {
@@ -62,8 +98,7 @@ $(document).ready(function () {
     console.log(err.responseJSON);
     if (err.responseJSON.parent.errno == "1062") {
       // console.log(err.responseJSON.parent.errno == '1062');
-      var errorMessage =
-        "Duplicate customer: Phone numbers and emails must be unique";
+      var errorMessage = "Duplicate customer";
     } else {
       var errorMessage = "Error";
     }
