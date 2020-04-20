@@ -33,6 +33,7 @@ $(document).ready(function () {
 
     // ajax get request to /api/customer/:phone
     const settings = {
+
       url: "/api/customerPhone/" + $("#phoneinput").text(),
       method: "GET",
       timeout: 0,
@@ -40,6 +41,7 @@ $(document).ready(function () {
     $.ajax(settings)
       .then(function (response) {
         const objCustomer = response[0];
+
         if (objCustomer) {
           // populate text() of first_nameSpan last_nameSpan emailSpan
           $("#first_nameSpan").text(objCustomer.first_name);
@@ -81,6 +83,8 @@ $(document).ready(function () {
       timeout: 0,
       data: {
         points_change: $("#addPointsInput").val(),
+
+        // SMH - Change to CustomerId (This is what sequelized changed it to)
         CustomerId: customerId,
       },
     };
@@ -141,6 +145,7 @@ $(document).ready(function () {
           tdReward.text(currentRewardHistory.Reward.reward_name);
         } else {
           tdReward.text("");
+
         }
 
         // create td element for createdAt
@@ -246,6 +251,7 @@ $(document).ready(function () {
               points_change: -Math.abs(parseInt(objReward.reward_points)),
               CustomerId: parseInt(customerId),
               RewardId: parseInt(rewardId),
+
             },
             // END assign values to to be inserted into rewardhistories
           };

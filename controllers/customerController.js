@@ -12,7 +12,7 @@ const router = express.Router();
 const db = require("../models");
 
 // find all customers for a comapny
-router.get("/api/customer/:CompanyId", (req, res) => {
+router.get("/api/customerComp/:CompanyId", (req, res) => {
   db.Customer.findAll({
     where: {
       CompanyId: req.params.CompanyId,
