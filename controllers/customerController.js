@@ -24,7 +24,7 @@ router.get("/api/customer/:CompanyId", (req, res) => {
 });
 
 // find a single customer
-router.get("/api/customer/:phone", (req, res) => {
+router.get("/api/customerPhone/:phone", (req, res) => {
   db.Customer.findAll({
     where: {
       phone: req.params.phone,

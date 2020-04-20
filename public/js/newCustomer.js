@@ -8,7 +8,6 @@ $(document).ready(function () {
   var customerList = $(".customerList");
   var companyHeader = $("#companyHeader");
   var custFocasId = "";
-  const CompanyId = sessionStorage.getItem("CompanyId");
   //
   buildCustList();
   //
@@ -22,20 +21,40 @@ $(document).ready(function () {
   });
   //
   // Build the cusomter list
-  function buildCustList(target) {
-    var custFocasId = target;
+  function buildCustList(custFocasId) {
+    // var custFocasId = target;
     // const CompanyId = sessionStorage.getItem("CompanyId");
     var url = "/api/customer/" + sessionStorage.getItem("CompanyId");
-    $.get(url, function (req, res) {
+    $.get(url, { custFocasId: custFocasId }, function (req, res) {
       customerList.empty();
-      req.forEach(function (arrayItem) {
+      req.forEach(function (custArray) {
         var aTag = $("<a>");
-        aTag.addClass("list-group-item list-group-item-action");
-        // aTag.text = `${arrayItem.firstName} - ${arrayItem.lastName}`;
+        if (custFocasId == custArray.id) {
+          // load the form
+          // $("#edit-auction-modal").on("show.bs.modal", function (e) {
+          firstName.val(custArray.first_name);
+          lastName.val(custArray.last_name);
+          phone.val(custArray.phone);
+          email.val(custArray.email);
+          // active.val(custArray.active);
+          $("#addCustomer").modal();
+          //   $("#edit-auction-modal ")
+          //     .find("input#input-id")
+          //     .val($(e.relatedTarget).data("title"));
+
+          //   $("#modal-from-dom").bind("show", function () {
+          //     $(".modal-body #wall-post").val($("#linkURL").val());
+          //   });
+          // });
+          aTag.addClass("list-group-item list-group-item-action active");
+        } else {
+          aTag.addClass("list-group-item list-group-item-action");
+          // aTag.text = `${custArray.firstName} - ${custArray.lastName}`;
+        }
         aTag.text(
-          `${arrayItem.first_name} ${arrayItem.last_name} - ${arrayItem.phone}`
+          `${custArray.first_name} ${custArray.last_name} - ${custArray.phone}`
         );
-        aTag.attr("id", arrayItem.id);
+        aTag.attr("id", custArray.id);
         customerList.append(aTag);
       });
     });
@@ -82,7 +101,7 @@ $(document).ready(function () {
     })
       .then(function () {
         window.location.replace("/customers");
-        // If there's an error, log the error
+        // smh build cusotmer list
       })
       // .catch(function (err) {
       //   console.log(err);

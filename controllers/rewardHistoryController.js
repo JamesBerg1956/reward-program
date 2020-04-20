@@ -15,12 +15,16 @@ router.get("/api/rewardhistory/:customer_id", (req, res) => {
   db.rewardhistory
     .findAll({
       where: {
-        customer_id: req.params.customer_id,
+        CustomerId: req.params.customer_id,
       },
       include: [db.Rewards],
     })
-    .then((response) => res.status(200).json(response))
-    .catch((error) => res.status(500).json(error));
+    .then((response) => {
+      res.status(200).json(response);
+    })
+    .catch((error) => {
+      res.status(500).json(error);
+    });
 });
 
 // post a rewardhistory.
