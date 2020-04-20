@@ -25,7 +25,7 @@ $(document).ready(function () {
   function buildCustList(target) {
     var custFocasId = target;
     // const CompanyId = sessionStorage.getItem("CompanyId");
-    var url = "/api/customer/" + sessionStorage.getItem("CompanyId");
+    var url = "/api/customerComp/" + sessionStorage.getItem("CompanyId");
     $.get(url, function (req, res) {
       customerList.empty();
       req.forEach(function (arrayItem) {
